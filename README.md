@@ -139,5 +139,6 @@ A few things I'd explore if I came back to this:
 ## Author
 
 TANAY BHATT
+
 Course: Fundamentals of AI and ML  
 Dataset: [IBM Telco Customer Churn — Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
