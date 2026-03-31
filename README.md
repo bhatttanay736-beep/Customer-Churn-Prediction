@@ -1,144 +1,39 @@
-# Customer Churn Prediction
-
-I built this project as part of my Fundamentals of AI and ML course. The idea came from a pretty straightforward observation — telecom companies spend a lot of money acquiring customers, but losing them is just as common and far more costly. I wanted to see if machine learning could actually help predict which customers are about to leave, before they do.
+# Forecast customer churn I made this project Seam part of mine Fundamentals of AI and ML Course The idea Came from a beautiful straightforward observation— Telecom companies invest a lot. Money acquiring customers, But losing them is just as common and far more expensive. I would observe about machine learning It can actually contribute to predict it customers Before they go, they must go.
 
 
 
-## Why This Problem
-
-I've seen people around me switch telecom providers constantly — usually because of pricing or poor support. It got me thinking: the company probably had no idea that customer was about to leave. If they did, maybe they'd have done something about it. That's essentially what this project tries to solve — giving a business that early warning system.
+## Why This Problem I've Then people around me change telecom providers Still— usually because of prices or poor support. This got me thinking: the company Probably had no idea that the customer was going to vacate. If they did, they probably would have done something That's basically what it's all about this project tries To solve— to give a business that early warning system.
 
 
 
-## The Dataset
+## The Dataset I used the IBM Telco Customer Churn dataset, which is publicly available. Kaggle. It contains information. 7, 043 customers— Things like how long they've been together. The company, What services they use, how much they contribute per month, and whether they eventually quit.
 
-I used the IBM Telco Customer Churn dataset, which is publicly available on Kaggle. It has information on 7,043 customers — things like how long they've been with the company, what services they use, how much they pay monthly, and whether they eventually left.
+The target variable is` Churn`— A simple yes or no. Everything And me the dataset It is used to predict.
 
-The target variable is `Churn` — a simple Yes or No. Everything else in the dataset is used to predict it.
-
-- **Rows:** 7,043 customers  
-- **Columns:** 21 features  
-- **Churn rate:** ~26.5% (roughly 1 in 4 customers left)
+-** Rows:** 7, 043 customers-** Column:** 21 features-** Release frequency:**~ 26.5%( About 1 inch 4 customers Again)## Project structure Customer churn forecast/│├── data/│└── telco_churn. Csv│├── notebook/│├── 01_eda. Ipynb│├── 02_preprocessing. Ipynb│└── 03_modelling. Ipynb│├── models/│└── random_forest_model. Pkl│├── results/│├── churn_distribution. Png│├── churn_by_contract. Png│├── monthly_charges_churn. Png│├── confusion_matrix. Png│├── roc_curve. Png│└── feature_importance. Png│├── requirements. Txt└── README. Md## How to tune It Up Produce guaranteed you have it. Python 3 Install and then install. The required libraries:``` bash Pip3 install- r requirements. Txt`` That's it. No complex setup, No environment variables, Don't like anything.
 
 
 
-## Project Structure
+## How to run it The project Goes over three Jupyter notebooks, And they must be run in order. Every single one but do the previous.
 
+** steps 1— Open Jupyter:**``` bash Cd customer- churn- prediction Jupyter notebook``** steps 2— run the notebooks I this sequence:**` 01_eda. Ipynb`— Start here. This notebook burden the dataset and explores it visually. You'll Witness how Manthan is distributed, what types of contracts there are. The highest dropout rates, And how? monthly charges There is a difference customers Those who stayed and those who left. Three plots Be safe the results folder Automatic` 02_preprocessing. Ipynb`— This one cleaning up the data And found it ready For modeling The TotalCharges column our some formatting issues( stored as strings instead of numbers), so that fixed here. All text columns are converted to numbers, and the data is divided into training and test sets. The processed data is saved as a pickle file So the next notebook Can load directly.
 
-customer-churn-prediction/
-│
-├── data/
-│   └── telco_churn.csv
-│
-├── notebooks/
-│   ├── 01_eda.ipynb
-│   ├── 02_preprocessing.ipynb
-│   └── 03_modelling.ipynb
-│
-├── models/
-│   └── random_forest_model.pkl
-│
-├── results/
-│   ├── churn_distribution.png
-│   ├── churn_by_contract.png
-│   ├── monthly_charges_churn.png
-│   ├── confusion_matrix.png
-│   ├── roc_curve.png
-│   └── feature_importance.png
-│
-├── requirements.txt
-└── README.md
+` 03_modelling. Ipynb`— The main event. This burden the processed data, trains two models( Logistic Regression and Random Forest), Evaluates them and generates them. The plots. Save on the best model. The end.
 
 
 
-## How to Set It Up
+## What I got Before you touch a model, go EDA told a clear story: Customers Hover around on month- to- month contracts 42%. Users on two- year contracts? approx 3%. The difference is huge and it immediately suggests what type of contract it will be. One Of the strongest signals I the model.
 
-Make sure you have Python 3 installed. Then install the required libraries:
-
-```bash
-pip3 install -r requirements.txt
-```
-
-That's it. No complex setup, no environment variables, nothing fancy.
+Monthly charges Also stands outside— the circle customers De som ble igjen betalte I gjennomsnitt mer. And there was a deadline. The reverse— Some had been together for a long time. The company, They were less likely to vacate.
 
 
 
-## How to Run It
+## Model results I trained. Two models And compared them. The test set( 20% Of the data, Approx 1, 409 customers):| Model| Accuracy| AUC- ROC| F1 Score||---|---|---|---|| Random Forest| 81.2%| 0.82| 0.61|| Logistic Regression| 79.6%| 0.79| 0.57| Random Forest Get ahead of every calculation, so it is. The final model. Go AUC Of 0.82 Importance the model do a solid job Distinguishing churners non- churners— okay above random guessing( 0.5).
 
-The project runs across three Jupyter notebooks, and they need to be run in order. Each one builds on the previous.
+The top There were functions in order of importance. Monthly charges, duration, and total Charges- Which line is with whom? the EDA Already recommended## Challenges I faced The` TotalCharges` column Looked like numbers but was actually stored as text in the CSV, including some empty strings. This caused errors until I figured out what was going on and used` pd. To_numeric` with it. ` errors=' coerce'` To handle nicely.
 
-**Step 1 — Open Jupyter:**
-```bash
-cd customer-churn-prediction
-jupyter notebook
-```
-
-**Step 2 — Run the notebooks in this sequence:**
-
-`01_eda.ipynb` — Start here. This notebook loads the dataset and explores it visually. You'll see how churn is distributed, which contract types have the highest dropout rates, and how monthly charges differ between customers who stayed and those who left. Three plots get saved to the results folder automatically.
-
-`02_preprocessing.ipynb` — This one cleans the data and gets it ready for modelling. The TotalCharges column had some formatting issues (stored as strings instead of numbers), so that gets fixed here. All text columns get converted to numbers, and the data gets split into training and test sets. The processed data is saved as a pickle file so the next notebook can load it directly.
-
-`03_modelling.ipynb` — The main event. This loads the processed data, trains two models (Logistic Regression and Random Forest), evaluates them, and generates the plots. The best model gets saved at the end.
+The dataset If- is also unbalanced 73% Of customers Not cored, and only 27% Means it a model Which just predicts that technically there will be" no churn" for everyone. 73% accuracy Without learning anything useful. F1 score and AUC The case more here from raw accuracy, And that's what I noticed when comparing models.
 
 
 
-## What I Found
-
-Before even touching a model, the EDA told a clear story:
-
-Customers on month-to-month contracts churn at around 42%. Customers on two-year contracts? About 3%. That gap is enormous, and it immediately suggested contract type would be one of the strongest signals in the model.
-
-Monthly charges also stood out — churned customers were paying noticeably more on average than those who stayed. And tenure was the reverse — the longer someone had been with the company, the less likely they were to leave.
-
-
-
-## Model Results
-
-I trained two models and compared them on the test set (20% of the data, roughly 1,409 customers):
-
-| Model | Accuracy | AUC-ROC | F1 Score |
-|---|---|---|---|
-| Random Forest | 81.2% | 0.82 | 0.61 |
-| Logistic Regression | 79.6% | 0.79 | 0.57 |
-
-Random Forest came out ahead on every metric, so that's the final model. The AUC of 0.82 means the model does a solid job of separating churners from non-churners — well above random guessing (0.5).
-
-The top features by importance were monthly charges, tenure, and total charges — which lines up exactly with what the EDA already suggested.
-
-
-
-## Challenges I Ran Into
-
-The `TotalCharges` column looked like numbers but was actually stored as text in the CSV, including some empty strings. That caused errors until I figured out what was happening and used `pd.to_numeric` with `errors='coerce'` to handle it cleanly.
-
-The dataset is also imbalanced — about 73% of customers didn't churn, and only 27% did. This means a model that just predicts "no churn" for everyone would technically get 73% accuracy without learning anything useful. The F1 score and AUC matter more here than raw accuracy, and that's what I focused on when comparing models.
-
-
-
-## Things I'd Do Differently With More Time
-
-A few things I'd explore if I came back to this:
-
-- Apply SMOTE to handle the class imbalance more aggressively
-- Try XGBoost or LightGBM, which tend to perform well on tabular data like this
-- Build a simple web interface where you can enter customer details and get a churn prediction instantly
-- Look at misclassified customers specifically — understanding where the model fails is often more useful than the accuracy number
-
-
-## Libraries Used
-
-- `pandas` — data loading and manipulation  
-- `numpy` — numerical operations  
-- `matplotlib` and `seaborn` — visualizations  
-- `scikit-learn` — model training and evaluation  
-- `jupyter` — notebook environment  
-
-
-
-## Author
-
-TANAY BHATT
-
-Course: Fundamentals of AI and ML  
-Dataset: [IBM Telco Customer Churn — Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+## Things I would do differently. More Time A few things If I return to it, I will discover:- Seek SMOTE to handle the class imbalance More aggressive- Strive it. XGBoost or LightGBM, Those who perform well. Tabular data In this strategy- Develop. A simple web interface Where you can enter and retrieve customer details. A churn prediction Immediately- Witness misclassified customers In particular- to understand where the model Mistakes are often more useful the accuracy number## Libraries used-` panda'— data loading and manipulation-' numpy'- numerical operations-` matplotlib` and` seaborn`— concepts-" Learn to Skate"- model training and evaluation-' jupyter'- notebook environment## The author TANAY BHATT Course: Fundamentals of AI and ML Data set:[ IBM Telco Customer Churn— Kaggle]( https:// www. Kaggle. Com/ datasets/ blastchar/ telco- customer- churn)
